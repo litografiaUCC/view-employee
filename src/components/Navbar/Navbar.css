@@ -1,0 +1,46 @@
+.link-nav-inactive:hover{
+    .blue,.pink,.yellow,.black{
+        width: 20%;
+        transition: width;
+        transition-duration: 25ms;
+    }
+    .pink{
+        transition-delay: 25ms;
+    }
+    .yellow{
+        transition-delay: 50ms;
+    }
+    .black{
+        width: 40%;
+        transition-delay: 75ms;
+        
+    }
+}
+
+.link-nav-inactive{
+    .blue,.pink,.yellow,.black{
+        width: 0%;
+        transition: width;
+        transition-duration: 100ms;
+    }
+    .pink{
+        transition-delay: 100ms;
+    }
+    .yellow{
+        transition-delay: 200ms;
+    }
+    .black{
+        width: 0%;
+        transition-delay: 300ms;
+        
+    }
+}
+
+.link-nav-active{
+    .blue,.pink,.yellow,.black{
+        width: 20%;
+    }
+    .black{
+        width: 40%;
+    }
+}
