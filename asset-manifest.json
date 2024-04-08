@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/litografiaUCC.github.io/view-employee/static/css/main.93e339d0.css",
+    "main.js": "/litografiaUCC.github.io/view-employee/static/js/main.3677d019.js",
+    "static/media/logo.png": "/litografiaUCC.github.io/view-employee/static/media/logo.c68f35e9434dc3314520.png",
+    "static/media/404.png": "/litografiaUCC.github.io/view-employee/static/media/404.bcfc09ea9c0abdd982aa.png",
+    "index.html": "/litografiaUCC.github.io/view-employee/index.html",
+    "main.93e339d0.css.map": "/litografiaUCC.github.io/view-employee/static/css/main.93e339d0.css.map",
+    "main.3677d019.js.map": "/litografiaUCC.github.io/view-employee/static/js/main.3677d019.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93e339d0.css",
+    "static/js/main.3677d019.js"
+  ]
+}
