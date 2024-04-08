@@ -3,9 +3,12 @@ import MaterialCard from "../../components/MaterialCard";
 import Navbar from "../../components/Navbar";
 import SearchForm from "../../components/SearchForm";
 import SelectForm from "../../components/SelectForm";
+import Loading from "../../components/Loading";
+import useLoading from "../../hooks/loading";
 
 const Inventory = ()=>{
     const [addStockActive, setAddStockActive] = useState(false);
+    const [loading, setLoading] = useLoading();
 
     const typesMaterial = [
         {id:1, name: "Papel"},
@@ -15,9 +18,9 @@ const Inventory = ()=>{
     const addStock = () => {
         setAddStockActive(!addStockActive);
     };
-
     return (
         <>
+        {loading && <Loading />}
         <Navbar route="/inventory"></Navbar>
         <section  className="p-[10%] pt-[2.5%] flex flex-wrap gap-5">
             <div className="flex w-[100%] pl-[1.5%] pr-[1.5%] justify-between">
