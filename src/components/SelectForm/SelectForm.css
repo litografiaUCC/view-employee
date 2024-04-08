@@ -1,0 +1,22 @@
+.type-select, .type-select:focus-within{
+    background-image: url("../../assets/select_icon.svg"); /*aquí deberás escribir la ruta de la imagen que utilizarás como flecha del desplegable*/
+    background-repeat: no-repeat;
+    background-position: right center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    transition: background-image;
+}
+
+.type-select:hover{
+    background-image: url("../../assets/select_icon_hover.svg");
+}
+
+.type-select:focus{
+    background-image: url("../../assets/select_icon_focus.svg");
+}
+
+.type-select:focus:hover{
+    background-image: url("../../assets/select_icon_focus_hover.svg");
+}

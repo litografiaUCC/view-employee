@@ -4,8 +4,11 @@ const Orders = ()=>{
     return (
         <>
           <Navbar route="/orders"/>
-          <section className="p-10 font-bold text-[36px]">
-            <h1>Pedidos</h1>
+          <section className="pl-[10%] pr-[10%] pt-[2.5%] flex flex-wrap gap-5">
+            <h2 className="font-bold text-[36px] capitalize">Pedidos solicitados</h2>
+          </section>
+          <section className="pl-[10%] pr-[10%] pt-[2.5%] flex flex-wrap gap-5">
+            <h2 className="font-bold text-[36px] capitalize">Pedidos aprovados</h2>
           </section>
         </>
       )

@@ -1,9 +1,21 @@
+import { useState } from "react";
 import MaterialCard from "../../components/MaterialCard";
 import Navbar from "../../components/Navbar";
 import SearchForm from "../../components/SearchForm";
 import SelectForm from "../../components/SelectForm";
 
 const Inventory = ()=>{
+    const [addStockActive, setAddStockActive] = useState(false);
+
+    const typesMaterial = [
+        {id:1, name: "Papel"},
+        {id:2, name: "Tinta"}
+    ];
+
+    const addStock = () => {
+        setAddStockActive(!addStockActive);
+    };
+
     return (
         <>
         <Navbar route="/inventory"></Navbar>
@@ -11,20 +23,16 @@ const Inventory = ()=>{
             <div className="flex w-[100%] pl-[1.5%] pr-[1.5%] justify-between">
                 <h1 className=" font-bold text-[36px] ">Inventario</h1>
                 <div className="flex justify-around w-[65%]">
-                    <SelectForm />
                     <SearchForm />
-                    <button className="bg-[#3166B5] capitalize font-bold text-white pl-5 pr-5 rounded-lg hover:bg-[#34638e]">
-                        Agregar stock
+                    <SelectForm types={typesMaterial}/>
+                    <button className="bg-[#3166B5] capitalize font-bold text-white pl-5 pr-5 rounded-lg hover:bg-[#34638e]" onClick={addStock}>
+                        {!addStockActive && "Agregar stock"}
+                        {addStockActive && "Terminar Cambios"}
                     </button>
                 </div>
             </div>
             <div className="w-[100%] flex flex-wrap gap-5 justify-around">
-                <MaterialCard />
-                <MaterialCard />
-                <MaterialCard />
-                <MaterialCard />
-                <MaterialCard />
-                <MaterialCard />
+                {[20,10,40,100,15,10].map((value)=><MaterialCard addStockActive={addStockActive} quantity={value}/>)}
             </div>
         </section>
         </>
