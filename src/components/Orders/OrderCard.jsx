@@ -8,7 +8,7 @@ export default function OrderCard({order}){
     let component = (<></>);
 
     if(order.prepared_by !== undefined){
-        component = (<p className=" font-semibold font-md text-xl text-right">
+        component = (<p className=" font-semibold font-md text-xl text-center">
             A elaborar por: <br />{order.prepared_by}
         </p>);
     }else{
