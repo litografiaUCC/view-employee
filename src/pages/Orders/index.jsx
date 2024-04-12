@@ -1,8 +1,8 @@
 import Navbar from "../../components/Navbar";
 import Loading from "../../components/Loading";
 import useLoading from "../../hooks/loading";
-import OrdersApproveSection from "../../components/OrdersApproveSection";
-import OrdersApprovedSection from "../../components/OrdersApprovedSection";
+import OrdersApproveSection from "../../components/Orders/OrdersApproveSection";
+import OrdersApprovedSection from "../../components/Orders/OrdersApprovedSection";
 
 const Orders = ()=>{
   const [loading, setLoading] = useLoading();
