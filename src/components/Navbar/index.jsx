@@ -2,10 +2,15 @@ import logo from '../../assets/logo.png';
 import "./Navbar.css";
 import { Link } from 'react-router-dom';
 import { NAV_ITEMS } from "../../utils/constants";
+import useModal from "../../hooks/useModal";
+import UserModal from '../User/UserModal';
 
 export default function Navbar({route}){
+  const [displayModal, handleModal]= useModal();
+
   const user = {
     img: "https://t3.ftcdn.net/jpg/03/58/90/78/360_F_358907879_Vdu96gF4XVhjCZxN2kCG0THTsSQi8IhT.jpg",
+    name: "Juan Sebastian"
   };
 
   return (
@@ -37,7 +42,7 @@ export default function Navbar({route}){
             </div>
           </li>
         ))}
-        <li className="m-5 cursor-pointer">
+        <li className="m-5 cursor-pointer" onClick={handleModal}>
             <img 
                 className="w-[80px] rounded-full"
                 src={user.img} 
@@ -45,6 +50,7 @@ export default function Navbar({route}){
             />
         </li>
       </ul>
+      {displayModal && <UserModal user={user} handleModal={handleModal}/>}
     </div>
   );
 }

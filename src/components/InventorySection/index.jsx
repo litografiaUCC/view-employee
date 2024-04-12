@@ -29,7 +29,7 @@ export default function InventorySection(){
             </div>
         </div>
         <div className="w-[100%] flex flex-wrap gap-5 justify-around">
-            {[20,10,40,100,15,10].map((value)=><MaterialCard addStockActive={addStockActive} quantity={value}/>)}
+            {[20,10,40,100,15,10].map((value, index)=><MaterialCard key={index} addStockActive={addStockActive} quantity={value}/>)}
         </div>
     </section>
     )

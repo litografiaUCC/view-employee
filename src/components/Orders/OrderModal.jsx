@@ -1,11 +1,9 @@
 import cancelIcon from "../../assets/x_icon.svg";
+import Modal from "../Modal";
 
 export default function OrderModal({order, handleModal, children}){
     return(
-    <div 
-        className="fixed inset-0 flex items-center justify-center bg-[#0000009e]" 
-        onClick={handleModal}
-    >
+    <Modal handleModal={handleModal}>
         <div 
             className="bg-white rounded-md flex max-w-5xl gap-5"
             onClick={(e) => e.stopPropagation()}
@@ -30,6 +28,6 @@ export default function OrderModal({order, handleModal, children}){
                 </div>
             </div>
         </div>
-    </div>
+    </Modal>
     );
 }

@@ -2,9 +2,10 @@ import { useState } from "react";
 import ApproveButton from "../Buttons/ApproveButton";
 import DisapproveButton from "../Buttons/DisapproveButton";
 import OrderModal from "./OrderModal";
+import useModal from "../../hooks/useModal";
 
 export default function OrderCard({order}){
-    const [displayModal,setDisplayModal] = useState(false);
+    const [displayModal,handleModal] = useModal();
     let component = (<></>);
 
     if(order.prepared_by !== undefined){
@@ -17,10 +18,6 @@ export default function OrderCard({order}){
             <ApproveButton />
         </>);
     }
-
-    const handleModal = ()=>{
-        setDisplayModal(!displayModal);
-    };
 
     return (
     <div className="w-[100%] bg-white rounded-md flex justify-between">
