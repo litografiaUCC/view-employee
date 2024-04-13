@@ -4,14 +4,19 @@ import { Link } from 'react-router-dom';
 import { NAV_ITEMS } from "../../utils/constants";
 import useModal from "../../hooks/useModal";
 import UserModal from '../User/UserModal';
+import useFetchUser from '../../hooks/useFetchUser';
 
 export default function Navbar({route}){
   const [displayModal, handleModal]= useModal();
 
-  const user = {
+  const defaultImg = "https://t3.ftcdn.net/jpg/03/58/90/78/360_F_358907879_Vdu96gF4XVhjCZxN2kCG0THTsSQi8IhT.jpg";
+
+  /* const user = {
     img: "https://t3.ftcdn.net/jpg/03/58/90/78/360_F_358907879_Vdu96gF4XVhjCZxN2kCG0THTsSQi8IhT.jpg",
     name: "Juan Sebastian"
-  };
+  }; */
+  
+  const [user] = useFetchUser();
 
   return (
     <div className='bg-[#7BB7EE] flex justify-around items-center mx-auto px-4 text-black sticky top-0'>
@@ -45,7 +50,7 @@ export default function Navbar({route}){
         <li className="m-5 cursor-pointer" onClick={handleModal}>
             <img 
                 className="w-[80px] rounded-full"
-                src={user.img} 
+                src={user ? user?.photo : defaultImg} 
                 alt="Foto Usuario"
             />
         </li>

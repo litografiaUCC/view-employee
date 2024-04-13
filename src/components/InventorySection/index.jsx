@@ -3,9 +3,9 @@ import SearchForm from "../SearchForm";
 import SelectForm from "../SelectForm";
 import MaterialCard from "../MaterialCard";
 
-export default function InventorySection(){
+export default function InventorySection({data}){
     const [addStockActive, setAddStockActive] = useState(false);
-    
+
     const typesMaterial = [
         {id:1, name: "Papel"},
         {id:2, name: "Tinta"}
@@ -29,7 +29,7 @@ export default function InventorySection(){
             </div>
         </div>
         <div className="w-[100%] flex flex-wrap gap-5 justify-around">
-            {[20,10,40,100,15,10].map((value, index)=><MaterialCard key={index} addStockActive={addStockActive} quantity={value}/>)}
+            {data?.map((value, index)=><MaterialCard key={index} addStockActive={addStockActive} data={value}/>)}
         </div>
     </section>
     )

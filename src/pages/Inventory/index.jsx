@@ -3,18 +3,17 @@
 import Navbar from "../../components/Navbar";
 
 import Loading from "../../components/Loading";
-import useLoading from "../../hooks/useLoading";
 import InventorySection from "../../components/InventorySection";
+import useFetchInventory from "../../hooks/useFetchInventory";
 
 const Inventory = ()=>{
-    
-    const [loading, setLoading] = useLoading();
-    
+    const [data, loading, setData, setLoading] = useFetchInventory("http://192.168.1.6:8081/api/v1/inventory/");
+
     return (
         <>
         <Navbar route="/inventory"></Navbar>
         {loading && <Loading />}
-        {!loading && <InventorySection />}
+        {!loading && <InventorySection data={data}/>}
         </>
     );
 };

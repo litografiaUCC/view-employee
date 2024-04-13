@@ -24,7 +24,7 @@ export default function UserModal({user, handleModal}){
             isEditable: true
         },{
             label: "apellidos",
-            data: user.name,
+            data: user.lastname,
             isEditable: true
         },
     ];
@@ -32,7 +32,7 @@ export default function UserModal({user, handleModal}){
     const itemsUserAdvance = [
         {
             label: "correo",
-            data: user.name,
+            data: user.email,
             isEditable: true
         },{
             label: "contraseña",
@@ -40,11 +40,11 @@ export default function UserModal({user, handleModal}){
             isEditable: true
         },{
             label: "tipo documento",
-            data: user.name,
+            data: (user.typeDocument) ? user?.typeDocument?.name : "N/A",
             isEditable: false
         },{
             label: "numero documento",
-            data: user.name,
+            data: user.numberDocument,
             isEditable: false
         },{
             label: "rol",
@@ -52,7 +52,7 @@ export default function UserModal({user, handleModal}){
             isEditable: false
         },{
             label: "Teléfono",
-            data: user.name,
+            data: (user.phone) ? user.phone: "N/A",
             isEditable: true
         }
     ];
@@ -65,18 +65,18 @@ export default function UserModal({user, handleModal}){
         >
             <div className="flex flex-col w-1/3">
                 <img 
-                    src={user.img} 
+                    src={user?.photo} 
                     alt="Imagen Usuario" 
                     className="w-full rounded-lg" 
                 />
                 {itemsUserBasic.map(({label, data, isEditable}) => 
-                    <UserInfoItem label={label} data={data} isEdit={isEdit} isEditable={isEditable}/>
+                    <UserInfoItem key={label} label={label} data={data} isEdit={isEdit} isEditable={isEditable}/>
                 )}
             </div>
             
             <div className="flex flex-col w-2/3">
                 {itemsUserAdvance.map(({label, data, isEditable}) => 
-                    <UserInfoItem label={label} data={data} isEdit={isEdit} isEditable={isEditable}/>
+                    <UserInfoItem key={label} label={label} data={data} isEdit={isEdit} isEditable={isEditable}/>
                 )}
                 <div className="flex gap-4 items-end justify-end min-h-[36px] mt-5">
                     <button className="bg-[#3166B5] hover:bg-[#34638e] text-white rounded h-[100%] pr-3 pl-3 text-xl font-normal flex items-center gap-1 capitalize max-w-[150px] text-wrap" onClick={handleIsEdit}>
