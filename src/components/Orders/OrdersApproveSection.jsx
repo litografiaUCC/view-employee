@@ -6,14 +6,18 @@ const order = {
     description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod illum ipsa atque, rerum consequuntur assumenda ut soluta non voluptas similique a officiis neque laboriosam quam delectus quasi facilis velit ipsam."
 };
 
-const orders = [order, order, order];
+// const orders = [/* order, order, order */];
 
-export default function OrdersApproveSection(){
+export default function OrdersApproveSection({ordersToApproved}){
     return (
     <section className="pl-[10%] pr-[10%] pt-[2.5%] flex flex-wrap gap-5">
         <h2 className="font-bold text-[36px] capitalize">Pedidos solicitados</h2>
         <div className="flex flex-col w-full gap-4 p-4 bg-[#D6D6D6] rounded-md">
-            {orders.map((order, index) => <OrderCard key={`ord-${index}`} order={order}/>)}
+            {ordersToApproved.length === 0 && 
+            <p className="bg-white rounded-md p-4 text-lg">
+                No hay pedidos por ser aprobados
+            </p>}
+            {ordersToApproved?.map((order, index) => <OrderCard key={`ord-${index}`} order={order}/>)}
         </div>
     </section>
     );

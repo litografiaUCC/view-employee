@@ -3,18 +3,24 @@ import Loading from "../../components/Loading";
 import useLoading from "../../hooks/useLoading";
 import OrdersApproveSection from "../../components/Orders/OrdersApproveSection";
 import OrdersApprovedSection from "../../components/Orders/OrdersApprovedSection";
+import useFetchOrders from "../../hooks/useFetchOrders";
 
 const Orders = ()=>{
-  const [loading, setLoading] = useLoading();
-
+  const [
+    ordersApproved, 
+    ordersToApproved, 
+    loading, 
+    setOrdersApproved, 
+    setOrdersToApproved
+  ] = useFetchOrders();
 
   return (
       <>
         <Navbar route="/orders"/>
         {loading && <Loading />}
         {!loading && <>
-          <OrdersApproveSection />
-          <OrdersApprovedSection />
+          <OrdersApproveSection ordersToApproved={ordersToApproved} />
+          <OrdersApprovedSection ordersApproved={ordersApproved} />
         </>}
       </>
     )

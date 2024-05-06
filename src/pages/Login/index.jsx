@@ -35,7 +35,10 @@ export default function Login() {
 
     const login = (event) => {
         event.preventDefault();
-        if(formData.email !== "" && formData.password !== "") return setUser(formData);
+        if(formData.email !== "" && formData.password !== "") {
+            fetch("http://192.168.1.6:9090/api/v1/employee/1").then((res)=>res.json()).then((res)=>setUser(res));
+            return;
+        };
         setIsAlertOpen(true);
         setTimeout(()=>setIsAlertOpen(false),  10000);
     };

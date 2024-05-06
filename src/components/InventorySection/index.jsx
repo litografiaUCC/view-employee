@@ -9,8 +9,7 @@ export default function InventorySection({data, setData}){
     const [formData, setFormData] = useState({});
 
     const typesMaterial = [
-        {id:1, name: "Papel"},
-        {id:2, name: "Tinta"}
+        
     ];
 
     const addStock = () => {

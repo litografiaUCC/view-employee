@@ -12,7 +12,7 @@ const routerUser = createBrowserRouter([
   ]);
 
 const routerDefault = createBrowserRouter([
-  {path: '/', element: <Login />}
+  {path: '*', element: <Login />}
 ]);
   
 export {routerUser, routerDefault};
