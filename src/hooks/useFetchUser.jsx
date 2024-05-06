@@ -10,7 +10,9 @@ function useFetchUser() {
         if(res.status >= 400) throw new Error();
     }).then((res)=>{
         setUser(res);
-    }).catch((e)=>{console.log(e);});
+    }).catch((e)=>{
+      console.log(e);
+    });
   },[]);
   
 

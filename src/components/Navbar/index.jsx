@@ -5,6 +5,9 @@ import { NAV_ITEMS } from "../../utils/constants";
 import useModal from "../../hooks/useModal";
 import UserModal from '../User/UserModal';
 import useFetchUser from '../../hooks/useFetchUser';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Navbar({route}){
   const [displayModal, handleModal]= useModal();
@@ -17,6 +20,12 @@ export default function Navbar({route}){
   }; */
   
   const [user] = useFetchUser();
+  const navigate = useNavigate();
+
+  /* useEffect(()=>{
+    console.log(user);
+    if(!user) navigate('/login');
+  },[user]); */
 
   return (
     <div className='bg-[#7BB7EE] flex justify-around items-center mx-auto px-4 text-black sticky top-0'>
