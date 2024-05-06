@@ -2,9 +2,11 @@ import { useState } from "react";
 import SearchForm from "../SearchForm";
 import SelectForm from "../SelectForm";
 import MaterialCard from "../MaterialCard";
+import fetchInvetory from "../../utils/fetchs";
 
-export default function InventorySection({data}){
+export default function InventorySection({data, setData}){
     const [addStockActive, setAddStockActive] = useState(false);
+    const [formData, setFormData] = useState({});
 
     const typesMaterial = [
         {id:1, name: "Papel"},
@@ -12,6 +14,16 @@ export default function InventorySection({data}){
     ];
 
     const addStock = () => {
+        if(addStockActive) {
+            for(const id in formData){
+                fetchInvetory(`/${id}/quantityUpdate?quantity=${formData[id]}`,"PATCH");
+                const index = data.findIndex(material => material.id == id);
+                const newData = [...data];
+                newData[index]["quantity"] = formData[id];
+                setData(newData);
+            }
+            setFormData({});
+        }
         setAddStockActive(!addStockActive);
     };
 
@@ -29,7 +41,7 @@ export default function InventorySection({data}){
             </div>
         </div>
         <div className="w-[100%] flex flex-wrap gap-5 justify-around">
-            {data?.map((value, index)=><MaterialCard key={index} addStockActive={addStockActive} data={value}/>)}
+            {data?.map((value, index)=><MaterialCard key={index} addStockActive={addStockActive} data={value} formData={formData} setFormData={setFormData}/>)}
         </div>
     </section>
     )

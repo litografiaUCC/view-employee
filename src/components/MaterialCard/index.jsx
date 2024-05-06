@@ -1,7 +1,14 @@
 import material from'../../assets/paper.jpg';
 import './MaterialCard.css';
 
-export default function MaterialCard({addStockActive, data}){
+export default function MaterialCard({addStockActive, data, formData, setFormData}){
+    const onChangeQuantityInput = (e) =>{
+        setFormData({
+            ...formData,
+            [data.id]: data.quantity + parseInt(e.target.value),
+        })
+    };
+
     return(
         <div className="bg-[#BBD4E3] p-[10px] rounded-md max-w-[30%] flex flex-col gap-2">
             <img src={material} alt="Imagen Papel" className='rounded-md w-full'/>
@@ -18,7 +25,8 @@ export default function MaterialCard({addStockActive, data}){
                     {addStockActive && "Cantidad a agregar"}
                 </h5>
                 {!addStockActive && <p className='text-lg'>{data?.quantity}</p>}
-                {addStockActive && <input type='number' placeholder={data?.quantity} className='text-lg w-[50%] text-center rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none border focus:ring-[#3166B5] focus:border-[#3166B5] focus:outline-none'></input>}
+                {addStockActive && <input type='number' placeholder={data?.quantity} className='text-lg w-[50%] text-center rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none border focus:ring-[#3166B5] focus:border-[#3166B5] focus:outline-none' 
+                onChange={onChangeQuantityInput}></input>}
             </div>
         </div>
     );
