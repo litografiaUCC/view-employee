@@ -3,14 +3,14 @@ import cancelIcon from "../../assets/x_icon.svg";
 import Modal from "../Modal";
 import UserInfoItem from "./UserInfoItem";
 
-export default function UserModal({user, handleModal}){
+export default function UserModal({user, setUser, handleModal}){
     const [isEdit, setIsEdit] = useState(false);
 
     const discardChanges = () => {
         setIsEdit(false);
     };
     const signOut = () => {
-        console.log("Sign Out");
+        setUser(null);
     };
 
     const handleIsEdit = ()=>{

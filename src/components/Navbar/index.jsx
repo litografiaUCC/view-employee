@@ -5,8 +5,8 @@ import { NAV_ITEMS } from "../../utils/constants";
 import useModal from "../../hooks/useModal";
 import UserModal from '../User/UserModal';
 import useFetchUser from '../../hooks/useFetchUser';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { UserContext } from '../../App';
 
 
 export default function Navbar({route}){
@@ -19,13 +19,9 @@ export default function Navbar({route}){
     name: "Juan Sebastian"
   }; */
   
-  const [user] = useFetchUser();
-  const navigate = useNavigate();
+  const {user, setUser} = useContext(UserContext);
 
-  /* useEffect(()=>{
-    console.log(user);
-    if(!user) navigate('/login');
-  },[user]); */
+  /* const [user] = useFetchUser(); */
 
   return (
     <div className='bg-[#7BB7EE] flex justify-around items-center mx-auto px-4 text-black sticky top-0'>
@@ -64,7 +60,7 @@ export default function Navbar({route}){
             />
         </li>
       </ul>
-      {displayModal && <UserModal user={user} handleModal={handleModal}/>}
+      {displayModal && <UserModal user={user} setUser={setUser} handleModal={handleModal}/>}
     </div>
   );
 }

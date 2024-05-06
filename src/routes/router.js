@@ -13,6 +13,6 @@ const routerUser = createBrowserRouter([
 
 const routerDefault = createBrowserRouter([
   {path: '/', element: <Login />}
-])
+]);
   
 export {routerUser, routerDefault};

@@ -1,7 +1,7 @@
 import { RouterProvider } from 'react-router-dom';
 import { routerDefault, routerUser} from './routes/router';
 import Loading from './components/Loading';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 const UserContext = createContext();
 
