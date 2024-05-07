@@ -2,7 +2,7 @@ import { useState } from "react";
 import SearchForm from "../SearchForm";
 import SelectForm from "../SelectForm";
 import MaterialCard from "../MaterialCard";
-import fetchInvetory from "../../utils/fetchs";
+import { fetchInventory } from "../../utils/fetchs";
 
 export default function InventorySection({data, setData}){
     const [addStockActive, setAddStockActive] = useState(false);
@@ -15,8 +15,8 @@ export default function InventorySection({data, setData}){
     const addStock = () => {
         if(addStockActive) {
             for(const id in formData){
-                fetchInvetory(`/${id}/quantityUpdate?quantity=${formData[id]}`,"PATCH");
-                const index = data.findIndex(material => material.id == id);
+                fetchInventory(`/${id}/quantityUpdate?quantity=${formData[id]}`,"PATCH");
+                const index = data.findIndex(material => material.id === parseInt(id));
                 const newData = [...data];
                 newData[index]["quantity"] = formData[id];
                 setData(newData);

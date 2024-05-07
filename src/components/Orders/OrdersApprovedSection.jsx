@@ -1,15 +1,5 @@
 import OrderCard from "./OrderCard";
 
-const order = {
-    name: "100 Cuadernos pasta dura",
-    image: "https://img.freepik.com/fotos-premium/cuaderno-paginas-aisladas-sobre-fondo-negro_868749-7623.jpg",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod illum ipsa atque, rerum consequuntur assumenda ut soluta non voluptas similique a officiis neque laboriosam quam delectus quasi facilis velit ipsam.",
-    prepared_by: "Pedro"
-};
-
-// const orders = [/* order, order, order */];
-
-
 export default function OrdersApprovedSection({ordersApproved}){
     return (
     <section className="pl-[10%] pr-[10%] pt-[2.5%] pb-[1%] flex flex-wrap gap-5">

@@ -2,7 +2,7 @@ import logo from "../../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleExclamation, faLock, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
-import { UserContext } from "../../App";
+import { TokenContext } from "../../App";
 
 export default function Login() {
     const defaultClass = "border-gray-400  bg-gray-50 focus:ring-[#3166B5] focus:border-[#3166B5] focus:outline-none";
@@ -13,11 +13,11 @@ export default function Login() {
     const [classEmail, setClassEmail] = useState(defaultClass);
     const [classPassword, setClassPassword] = useState(defaultClass);
     const [formData,setFormData] = useState({
-        email: "", 
+        username: "", 
         password: ""
     });
 
-    const {user, setUser} = useContext(UserContext);
+    const {setToken} = useContext(TokenContext);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -26,7 +26,7 @@ export default function Login() {
             [name]: value,
         });
 
-        if(name === "email") {
+        if(name === "username") {
             (value.includes("@")) ? setClassEmail(correctClass) : setClassEmail(alertClass);
         }else if(name === "password"){
             (value.length >= 8) ? setClassPassword(correctClass) : setClassPassword(alertClass);
@@ -35,12 +35,22 @@ export default function Login() {
 
     const login = (event) => {
         event.preventDefault();
-        if(formData.email !== "" && formData.password !== "") {
-            fetch("http://192.168.1.6:9090/api/v1/employee/1").then((res)=>res.json()).then((res)=>setUser(res));
+        if(!(formData.username.includes("@")) && formData.password.length < 8){
+            setIsAlertOpen(true);
+        }
+        if(formData.username !== "" && formData.password !== "") {
+            fetch("http://192.168.1.6:9090/auth/generateToken",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+                .then((res)=>res.json())
+                .then((res)=>setToken(res.token))
+                .catch(()=>setIsAlertOpen(true));
             return;
-        };
-        setIsAlertOpen(true);
-        setTimeout(()=>setIsAlertOpen(false),  10000);
+        }
     };
 
     return (
@@ -60,10 +70,10 @@ export default function Login() {
                 <h1 className="font-extrabold text-4xl">Login</h1>
                 <form className="flex flex-col gap-3 w-full px-20" onSubmit={login} action="">
                     <div className={"bg-white flex w-full p-4 text-md text-gray-900 border rounded-lg " + classEmail}>
-                        <label htmlFor="email" className="flex rounded-full items-center justify-center text-xl w-[10%] h-full cursor-pointer">
+                        <label htmlFor="username" className="flex rounded-full items-center justify-center text-xl w-[10%] h-full cursor-pointer">
                             <FontAwesomeIcon icon={faUserAlt} />
                         </label>
-                        <input type="email" name="email" id="email" placeholder="Correo" className="border-none focus:border-none focus:outline-none w-[90%] h-full" 
+                        <input type="email" name="username" id="email" placeholder="Correo" className="border-none focus:border-none focus:outline-none w-[90%] h-full" 
                         onFocus={()=>{setClassEmail(focusClass)}} 
                         onBlur={()=>{setClassEmail(defaultClass)}} 
                         onChange={handleChange}/>

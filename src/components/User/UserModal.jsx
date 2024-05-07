@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import cancelIcon from "../../assets/x_icon.svg";
 import Modal from "../Modal";
 import UserInfoItem from "./UserInfoItem";
+import { TokenContext } from "../../App";
 
-export default function UserModal({user, setUser, handleModal}){
+export default function UserModal({user, setUser, handleModal, defaultImg}){
     const [isEdit, setIsEdit] = useState(false);
+    const {setToken} = useContext(TokenContext);
 
     const discardChanges = () => {
         setIsEdit(false);
     };
     const signOut = () => {
         setUser(null);
+        setToken(null);
+        localStorage.clear();
     };
 
     const handleIsEdit = ()=>{
@@ -48,7 +52,7 @@ export default function UserModal({user, setUser, handleModal}){
             isEditable: false
         },{
             label: "rol",
-            data: user.name,
+            data: (user.rol) ? user?.rol : "N/A",
             isEditable: false
         },{
             label: "Teléfono",
@@ -65,7 +69,7 @@ export default function UserModal({user, setUser, handleModal}){
         >
             <div className="flex flex-col w-1/3">
                 <img 
-                    src={user?.photo} 
+                    src={user.photo !== null ? user?.photo : defaultImg} 
                     alt="Imagen Usuario" 
                     className="w-full rounded-lg" 
                 />
