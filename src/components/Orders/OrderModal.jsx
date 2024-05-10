@@ -9,16 +9,17 @@ export default function OrderModal({order, handleModal, children}){
             onClick={(e) => e.stopPropagation()}
         >
             <img 
-                src={order.image} 
+                src={order?.service?.picture} 
                 alt="Imagen Producto" 
                 className="max-w-sm rounded" 
             />
             <div className="flex flex-col gap-4 justify-center">
                 <div className="flex flex-col items-center justify-center">
-                    <p className="font-bold text-[24px] text-center">{order.name}</p>
-                    <p className="text-[18px] text-center">{order.description}</p>
+                    <p className="font-bold text-[24px] text-center">Orden #{order.id}</p>
+                    <p className="text-[18px] text-center italic">{order?.service?.name}</p>
+                    <p className="text-[18px] text-center">{order?.service?.description}</p>
                 </div>
-                <div className="flex gap-4 items-center justify-center h-2/6">
+                <div className="flex gap-4 items-center justify-center h-2/6 p-6">
                     {children}
                 </div>
             </div>

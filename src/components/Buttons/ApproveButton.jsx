@@ -1,11 +1,14 @@
-import okIcon from "../../assets/ok_icon.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-export default function ApproveButton(){
+export default function ApproveButton({onClick}){
+
     return (
         <button 
-            className="bg-[#34a132] hover:bg-[hsl(119,53%,33%)] text-white rounded h-[50%] pr-3 pl-3 text-xl font-normal flex items-center gap-1"
+            className="bg-[#34a132] hover:bg-[hsl(119,53%,33%)] text-white rounded px-3 py-2 text-xl font-normal flex items-center gap-1" 
+            onClick={onClick}
         >
-            <img src={okIcon} alt="Icon Check" />
+            <FontAwesomeIcon icon={faCheck} className="w-9 h-7"/>
             Aprobar
         </button>
     );

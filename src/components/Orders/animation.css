@@ -1,0 +1,13 @@
+.animation-modal{
+    animation: display-modal 500ms;
+}
+
+@keyframes display-modal {
+    0%{
+        transform: translateX(500px);
+    }80%{
+        transform: translate(-50px);
+    }100%{
+        transform: translateX(0px);
+    }
+}
