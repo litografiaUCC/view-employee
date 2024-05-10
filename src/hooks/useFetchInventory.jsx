@@ -4,6 +4,7 @@ function useFetchInventory(endpoint = "/", method = "GET", body = null) {
     const url = "http://192.168.1.6:9090/api/v1/inventory" + endpoint;
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
+    const [isUpdated, setIsUpdated] = useState(false);
 
     const configRequest = {
         method, 
@@ -23,9 +24,9 @@ function useFetchInventory(endpoint = "/", method = "GET", body = null) {
             setData(res);
             setLoading(false);
         }).catch((e)=>{console.log(e);});
-    },[]);
+    },[isUpdated]);
 
-    return [data, loading, setData];
+    return [data, loading, setData, setIsUpdated];
 }
 
 export default useFetchInventory;

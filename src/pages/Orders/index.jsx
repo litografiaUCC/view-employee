@@ -16,8 +16,10 @@ const Orders = ()=>{
   return (
       <>
         <Navbar route="/orders"/>
-        {loading && <Loading />}
-        {!loading && <>
+        {loading ? 
+        <Loading /> 
+        : 
+        <>
           <OrdersApproveSection ordersToApproved={ordersToApproved} />
           <OrdersApprovedSection ordersApproved={ordersApproved} />
         </>}

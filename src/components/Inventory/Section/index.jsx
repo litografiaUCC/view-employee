@@ -1,16 +1,19 @@
 import { useState } from "react";
-import SearchForm from "../SearchForm";
-import SelectForm from "../SelectForm";
+import SearchForm from "../../SearchForm";
+import SelectForm from "../../SelectForm";
 import MaterialCard from "../MaterialCard";
-import { fetchInventory } from "../../utils/fetchs";
+import { fetchInventory } from "../../../utils/fetchs";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import "./index.css";
+import FormNewMaterial from "../FormNewMaterial";
+import useGetTypesMaterial from "../../../hooks/useGetTypesMaterial";
 
-export default function InventorySection({data, setData}){
+export default function InventorySection({data, setData, setIsUpdated}){
     const [addStockActive, setAddStockActive] = useState(false);
     const [formData, setFormData] = useState({});
-
-    const typesMaterial = [
-        
-    ];
+    const [displayForm, setDisplayForm] = useState(false);
+    const [typesMaterial, setTypesMaterial] = useGetTypesMaterial();
 
     const addStock = () => {
         if(addStockActive) {
@@ -24,6 +27,10 @@ export default function InventorySection({data, setData}){
             setFormData({});
         }
         setAddStockActive(!addStockActive);
+    };
+
+    const handleForm = () => {
+        setDisplayForm(true);
     };
 
     return (
@@ -42,6 +49,10 @@ export default function InventorySection({data, setData}){
         <div className="w-[100%] flex flex-wrap gap-5 justify-around">
             {data?.map((value, index)=><MaterialCard key={index} addStockActive={addStockActive} data={value} formData={formData} setFormData={setFormData}/>)}
         </div>
+        <button className="fixed bottom-10 right-16 bg-[#3166B5] capitalize font-bold text-[24px] text-white min-w-14 min-h-14 rounded-full hover:bg-[#34638e] text-center flex justify-center items-center add-stock-button transition-all hover:px-5" onClick={handleForm}>
+            <FontAwesomeIcon icon={faPlus} />
+        </button>
+        {displayForm && <FormNewMaterial setDisplayForm={setDisplayForm} typesMaterial={typesMaterial} setIsUpdated={setIsUpdated}/>}
     </section>
     )
 }

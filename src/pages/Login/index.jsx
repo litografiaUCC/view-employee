@@ -37,6 +37,7 @@ export default function Login() {
         event.preventDefault();
         if(!(formData.username.includes("@")) && formData.password.length < 8){
             setIsAlertOpen(true);
+            setTimeout(()=>setIsAlertOpen(false), 5000);
         }
         if(formData.username !== "" && formData.password !== "") {
             fetch("http://192.168.1.6:9090/auth/generateToken",{
@@ -49,6 +50,7 @@ export default function Login() {
                 .then((res)=>res.json())
                 .then((res)=>setToken(res.token))
                 .catch(()=>setIsAlertOpen(true));
+            setTimeout(()=>setIsAlertOpen(false), 5000);
             return;
         }
     };

@@ -1,4 +1,4 @@
-import material from'../../assets/paper.jpg';
+import material from '../../../assets/paper.jpg';
 import './MaterialCard.css';
 
 export default function MaterialCard({addStockActive, data, formData, setFormData}){
