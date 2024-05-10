@@ -10,6 +10,7 @@ const TokenContext = createContext();
 const App = ()=> {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(localStorage.getItem("token"));
+    const [isUpdatedUser, setIsUpdatedUser] = useState(true);
 
     useEffect(()=>{
         if(token !== null) {
@@ -29,11 +30,19 @@ const App = ()=> {
                     localStorage.removeItem("token");
                 });
         }
-    },[token]);
+    },[token, isUpdatedUser]);
 
     return (
-        <TokenContext.Provider value={{token,setToken}}>
-            <UserContext.Provider value={{user,setUser}}>
+        <TokenContext.Provider value={{
+            token,
+            setToken
+        }}>
+            <UserContext.Provider value={{
+                user,
+                setUser, 
+                isUpdatedUser, 
+                setIsUpdatedUser
+            }}>
                 <RouterProvider router={user !== null ? routerUser : routerDefault} fallbackElement={<Loading />}/>
             </UserContext.Provider>
         </TokenContext.Provider>

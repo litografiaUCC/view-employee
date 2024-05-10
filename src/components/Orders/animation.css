@@ -1,8 +1,8 @@
-.animation-modal{
-    animation: display-modal 500ms;
+.animation-modal-message{
+    animation: display-modal-message 500ms;
 }
 
-@keyframes display-modal {
+@keyframes display-modal-message {
     0%{
         transform: translateX(500px);
     }80%{

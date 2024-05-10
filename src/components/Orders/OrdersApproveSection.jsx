@@ -53,13 +53,13 @@ export default function OrdersApproveSection({ordersToApproved}){
             )}
         </div>
         {displayApproveModal &&
-            <div className="fixed bottom-3 right-3 flex rounded bg-green-500 text-white text-2xl justify-center items-center gap-5 p-5 w-[310px] animation-modal">
+            <div className="fixed bottom-3 right-3 flex rounded bg-green-500 text-white text-2xl justify-center items-center gap-5 p-5 w-[310px] animation-modal-message">
                 <FontAwesomeIcon className="w-24 h-24" icon={faCheckCircle} />
                 <p className="text-wrap text-center">Fue Aprovado con Éxito</p>
             </div>
         }
         {displayCancelModal &&
-            <div className="fixed bottom-3 right-3 flex rounded bg-red-500 text-white text-2xl justify-center items-center gap-5 p-5 w-[310px] animation-modal">
+            <div className="fixed bottom-3 right-3 flex rounded bg-red-500 text-white text-2xl justify-center items-center gap-5 p-5 w-[310px] animation-modal-message">
                 <FontAwesomeIcon className="w-24 h-24" icon={faXmarkCircle} />
                 <p className="text-wrap text-center">Se ha desaprobado el pedido</p>
             </div>

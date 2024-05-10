@@ -13,7 +13,7 @@ export default function Navbar({route}){
 
   const defaultImg = "https://t3.ftcdn.net/jpg/03/58/90/78/360_F_358907879_Vdu96gF4XVhjCZxN2kCG0THTsSQi8IhT.jpg";
   
-  const {user, setUser} = useContext(UserContext);
+  const {user, setUser, isUpdatedUser, setIsUpdatedUser} = useContext(UserContext);
 
   return (
     <div className='bg-[#7BB7EE] flex justify-around items-center mx-auto px-4 text-black sticky top-0'>
@@ -52,7 +52,15 @@ export default function Navbar({route}){
             />
         </li>
       </ul>
-      {displayModal && <UserModal user={user} setUser={setUser} handleModal={handleModal} defaultImg={defaultImg}/>}
+      {displayModal && 
+        <UserModal 
+          user={user} 
+          setUser={setUser} 
+          isUpdatedUser={isUpdatedUser} 
+          setIsUpdatedUser={setIsUpdatedUser} 
+          handleModal={handleModal} 
+          defaultImg={defaultImg}/>
+      }
     </div>
   );
 }
