@@ -1,5 +1,5 @@
 .animation-modal{
-    animation: display-modal 500ms ease-in;
+    animation: display-modal 500ms ease;
 }
 
 @keyframes display-modal {

@@ -14,12 +14,12 @@ export default function UserModal({
     defaultImg
 }){
     const [isEdit, setIsEdit] = useState(false);
-    const [formData, setFormData] = useState({});
     const {setToken} = useContext(TokenContext);
     const {id: userId} = user;
+    const [formData, setFormData] = useState({id: userId});
 
     const discardChanges = () => {
-        setFormData({});
+        setFormData({id: userId});
         setIsEdit(false);
     };
 
@@ -32,9 +32,8 @@ export default function UserModal({
     const handleIsEdit = ()=>{
         setIsEdit(!isEdit);
     };
-
+    
     const submitData = () => {
-        setFormData({...formData, id: userId});
         fetch("http://localhost:9090/api/v1/employee/update", {
             method: "PUT",
             headers: {
