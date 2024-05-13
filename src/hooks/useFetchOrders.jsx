@@ -6,6 +6,7 @@ function useFetchOrders() {
     const [loading, setLoading] = useState(true);
     const [ordersApproved, setOrdersApproved] = useState([]);
     const [ordersToApproved, setOrdersToApproved] = useState([]);
+    const [isUpdated, setIsUpdated] = useState(false);
 
     useEffect(()=>{
         // Fetch orders approved
@@ -29,9 +30,17 @@ function useFetchOrders() {
             setOrdersToApproved(res);
             setLoading(false);
         }).catch((e)=>{console.log(e);});
-    },[]);
+    },[isUpdated]);
 
-    return [ordersApproved, ordersToApproved, loading, setOrdersApproved, setOrdersToApproved];
+    return [
+        ordersApproved, 
+        ordersToApproved, 
+        loading, 
+        setOrdersApproved, 
+        setOrdersToApproved, 
+        isUpdated, 
+        setIsUpdated
+    ];
 }
 
 export default useFetchOrders;

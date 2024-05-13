@@ -10,7 +10,9 @@ const Orders = ()=>{
     ordersToApproved, 
     loading, 
     setOrdersApproved, 
-    setOrdersToApproved
+    setOrdersToApproved,
+    isUpdated, 
+    setIsUpdated
   ] = useFetchOrders();
 
   return (
@@ -20,8 +22,16 @@ const Orders = ()=>{
         <Loading /> 
         : 
         <>
-          <OrdersApproveSection ordersToApproved={ordersToApproved} />
-          <OrdersApprovedSection ordersApproved={ordersApproved} />
+          <OrdersApproveSection 
+            ordersToApproved={ordersToApproved} 
+            isUpdated={isUpdated} 
+            setIsUpdated={setIsUpdated} 
+          />
+          <OrdersApprovedSection 
+            ordersApproved={ordersApproved} 
+            isUpdated={isUpdated} 
+            setIsUpdated={setIsUpdated} 
+          />
         </>}
       </>
     )

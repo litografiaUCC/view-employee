@@ -1,5 +1,6 @@
 import cancelIcon from "../../assets/x_icon.svg";
 import Modal from "../Modal";
+import defaultImage from "../../assets/default_image_service.jpg";
 
 export default function OrderModal({order, handleModal, children}){
     return(
@@ -9,7 +10,7 @@ export default function OrderModal({order, handleModal, children}){
             onClick={(e) => e.stopPropagation()}
         >
             <img 
-                src={order?.service?.picture} 
+                src={order?.service?.picture ? order?.service?.picture : defaultImage} 
                 alt="Imagen Producto" 
                 className="max-w-sm rounded" 
             />

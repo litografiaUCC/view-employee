@@ -47,7 +47,15 @@ export default function InventorySection({data, setData, setIsUpdated}){
             </div>
         </div>
         <div className="w-[100%] flex flex-wrap gap-5 justify-around">
-            {data?.map((value, index)=><MaterialCard key={index} addStockActive={addStockActive} data={value} formData={formData} setFormData={setFormData}/>)}
+            {data?.map((value, index)=>
+                <MaterialCard 
+                    key={index} 
+                    addStockActive={addStockActive} 
+                    data={value} 
+                    formData={formData} 
+                    setFormData={setFormData}
+                    setIsUpdated={setIsUpdated}
+                />)}
         </div>
         <button className="fixed bottom-10 right-16 bg-[#3166B5] capitalize font-bold text-[24px] text-white min-w-14 min-h-14 rounded-full hover:bg-[#34638e] text-center flex justify-center items-center add-stock-button transition-all hover:px-5" onClick={handleForm}>
             <FontAwesomeIcon icon={faPlus} />

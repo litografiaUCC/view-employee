@@ -4,40 +4,10 @@ import OrderCard from "./OrderCard";
 import { faCheckCircle } from "@fortawesome/free-regular-svg-icons/faCheckCircle";
 import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons";
 import "./animation.css";
-import serviceImage from "../../assets/paper.jpg";
 
-export default function OrdersApproveSection({ordersToApproved}){
+export default function OrdersApproveSection({ordersToApproved, isUpdated, setIsUpdated}){
     const [displayApproveModal, setDisplayApproveModal] = useState(false);
     const [displayCancelModal, setDisplayCancelModal] = useState(false);
-
-    /* ordersToApproved = [{
-        id: 1,
-        service: {
-            name: "Nombre servicio",
-            description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam voluptas optio animi deleniti, delectus aut blanditiis expedita architecto quisquam pariatur sequi suscipit ab voluptates ut? Ut adipisci fuga corrupti omnis.",
-            picture: serviceImage
-        }
-    },{
-        id: 2,
-        service: {
-            name: "Nombre servicio",
-            description: "Esto es una descripcion corta",
-            picture: serviceImage
-        }
-    },{
-        id: 3,
-        service: {
-            name: "Nombre servicio",
-            picture: serviceImage
-        }
-    },{
-        id: 4,
-        service: {
-            name: "Nombre servicio",
-            description: "Esto es una descripcion corta",
-            picture: serviceImage
-        }
-    }]; */
 
     return (
     <section className="pl-[10%] pr-[10%] pt-[2.5%] flex flex-wrap gap-5">
@@ -49,7 +19,14 @@ export default function OrdersApproveSection({ordersToApproved}){
                 </p>
             }
             {ordersToApproved?.map((order, index) => 
-                <OrderCard key={`ord-${index}`} order={order} setDisplayApproveModal={setDisplayApproveModal} setDisplayCancelModal={setDisplayCancelModal} />
+                <OrderCard 
+                    key={`ord-${index}`} 
+                    order={order} 
+                    setDisplayApproveModal={setDisplayApproveModal} 
+                    setDisplayCancelModal={setDisplayCancelModal} 
+                    isUpdated={isUpdated} 
+                    setIsUpdated={setIsUpdated} 
+                />
             )}
         </div>
         {displayApproveModal &&
