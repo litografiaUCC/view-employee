@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import defaultImage from '../../../assets/default_image_service.jpg';
 import './MaterialCard.css';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { HOST_API } from '../../../utils/constants';
 
 export default function MaterialCard({addStockActive, data, formData, setFormData, setIsUpdated}){
     const onChangeQuantityInput = (e) =>{
@@ -13,7 +14,7 @@ export default function MaterialCard({addStockActive, data, formData, setFormDat
 
     const deleteMaterial = () => {
         setIsUpdated(false);
-        fetch(`http://localhost:9090/api/v1/inventory/${data?.id}/delete`, {
+        fetch(`http://${HOST_API}:9090/api/v1/inventory/${data?.id}/delete`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json"

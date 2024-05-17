@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleExclamation, faLock, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { TokenContext } from "../../App";
+import { HOST_API } from "../../utils/constants";
 
 export default function Login() {
     const defaultClass = "border-gray-400  bg-gray-50 focus:ring-[#3166B5] focus:border-[#3166B5] focus:outline-none";
@@ -40,7 +41,7 @@ export default function Login() {
             setTimeout(()=>setIsAlertOpen(false), 5000);
         }
         if(formData.username !== "" && formData.password !== "") {
-            fetch("http://192.168.1.6:9090/auth/generateToken",{
+            fetch(`http://${HOST_API}:9090/auth/generateToken`,{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

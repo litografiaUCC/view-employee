@@ -3,4 +3,6 @@ const NAV_ITEMS = [
     { id: 2, text: 'Pedidos', link: '/orders'},
   ];
 
-export { NAV_ITEMS};
+const HOST_API = "localhost";
+
+export { NAV_ITEMS, HOST_API};

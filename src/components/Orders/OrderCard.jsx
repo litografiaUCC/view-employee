@@ -3,6 +3,7 @@ import DisapproveButton from "../Buttons/DisapproveButton";
 import OrderModal from "./OrderModal";
 import useModal from "../../hooks/useModal";
 import defaultImage from "../../assets/default_image_service.jpg";
+import { HOST_API } from "../../utils/constants";
 
 export default function OrderCard({
     order, 
@@ -15,7 +16,7 @@ export default function OrderCard({
     let component = (<></>);
 
     const approveOrder = () => {
-        fetch(`http://localhost:9090/api/v1/orders/${order?.id}/approve`, {
+        fetch(`http://${HOST_API}:9090/api/v1/orders/${order?.id}/approve`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -33,7 +34,7 @@ export default function OrderCard({
     };
 
     const disapproveOrder = () => {
-        fetch(`http://localhost:9090/api/v1/orders/${order?.id}/disapprove`, {
+        fetch(`http://${HOST_API}:9090/api/v1/orders/${order?.id}/disapprove`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"

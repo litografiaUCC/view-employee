@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
+import { HOST_API } from '../utils/constants';
 
 function useFetchOrders() {
-    const urlApproved = "http://192.168.1.6:9090/api/v1/orders/approved";
-    const urlToApproved = "http://192.168.1.6:9090/api/v1/orders/toapprove";
+    const urlApproved = `http://${HOST_API}:9090/api/v1/orders/approved`;
+    const urlToApproved = `http://${HOST_API}:9090/api/v1/orders/toapprove`;
     const [loading, setLoading] = useState(true);
     const [ordersApproved, setOrdersApproved] = useState([]);
     const [ordersToApproved, setOrdersToApproved] = useState([]);

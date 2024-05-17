@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { HOST_API } from "../../../utils/constants";
 
 const FormNewMaterial = ({setDisplayForm, typesMaterial, setIsUpdated}) => {
     const [formData, setFormData] = useState({});
@@ -28,7 +29,7 @@ const FormNewMaterial = ({setDisplayForm, typesMaterial, setIsUpdated}) => {
             409: "Material ya existente",
             400: "Ups! Ha ocurrido un error"
         };
-        await fetch("http://localhost:9090/api/v1/inventory/save", {
+        await fetch(`http://${HOST_API}:9090/api/v1/inventory/save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

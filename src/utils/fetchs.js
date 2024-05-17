@@ -1,5 +1,7 @@
+import { HOST_API } from "./constants";
+
 async function fetchInventory(endpoint = "/", method = "GET", body = null){
-    const url = "http://192.168.1.6:9090/api/v1/inventory" + endpoint;
+    const url = `http://${HOST_API}:9090/api/v1/inventory` + endpoint;
     const configRequest = {
         method, 
         headers: {
@@ -18,7 +20,7 @@ async function fetchInventory(endpoint = "/", method = "GET", body = null){
 }
 
 async function fetchUserData(id, setUser){
-    const url = "http://192.168.1.6:9090/api/v1/employee/" + id;
+    const url = `http://${HOST_API}:9090/api/v1/employee/` + id;
 
     await fetch(url)
         .then((res)=>{

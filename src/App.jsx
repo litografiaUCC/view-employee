@@ -3,6 +3,7 @@ import { routerDefault, routerUser} from './routes/router';
 import Loading from './components/Loading';
 import { createContext, useEffect, useState } from 'react';
 import { fetchUserData } from './utils/fetchs';
+import { HOST_API } from './utils/constants';
 
 const UserContext = createContext();
 const TokenContext = createContext();
@@ -14,7 +15,7 @@ const App = ()=> {
 
     useEffect(()=>{
         if(token !== null) {
-            fetch("http://192.168.1.6:9090/auth/userInfo",{
+            fetch(`http://${HOST_API}:9090/auth/userInfo`,{
                 headers: {
                     "Authorization": `Bearer ${token}` 
                 }
