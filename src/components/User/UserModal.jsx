@@ -4,6 +4,7 @@ import Modal from "../Modal";
 import UserInfoItem from "./UserInfoItem";
 import { TokenContext } from "../../App";
 import "./UserModal.css";
+import { HOST_API } from "../../utils/constants";
 
 export default function UserModal({
     user, 
@@ -34,7 +35,7 @@ export default function UserModal({
     };
     
     const submitData = () => {
-        fetch("http://localhost:9090/api/v1/employee/update", {
+        fetch(`http://${HOST_API}:9090/api/v1/employee/update`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

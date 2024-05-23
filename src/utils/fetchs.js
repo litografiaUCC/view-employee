@@ -32,7 +32,7 @@ async function fetchUserData(id, setUser){
 }
 
 async function fetchDataToken(token){
-    await fetch("http://192.168.1.6:9090/auth/userInfo",{
+    await fetch(`http://${HOST_API}:9090/auth/userInfo`,{
         headers: {
             "Authorization": `Bearer ${token}` 
         }
