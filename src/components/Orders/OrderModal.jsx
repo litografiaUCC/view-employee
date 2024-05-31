@@ -1,6 +1,8 @@
 import cancelIcon from "../../assets/x_icon.svg";
 import Modal from "../Modal";
 import defaultImage from "../../assets/default_image_service.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 export default function OrderModal({order, handleModal, children}){
     return(
@@ -20,8 +22,22 @@ export default function OrderModal({order, handleModal, children}){
                     <p className="text-[18px] text-center italic">{order?.service?.name}</p>
                     <p className="text-[18px] text-center">{order?.service?.description}</p>
                 </div>
-                <div className="flex gap-4 items-center justify-center h-2/6 p-6">
+                <div className={`flex gap-4 items-center justify-center h-2/6 p-6 ${order?.approval && "flex-col"}`}>
                     {children}
+                    {order?.approval && (
+                        order?.client?.phone ? 
+                            <a href={`tel:+57${order?.client?.phone}`}>
+                                <button className="bg-blue-500 text-white text-lg p-2 rounded flex justify-around items-center">
+                                    <FontAwesomeIcon icon={faPhone}/>{order?.client?.phone}
+                                </button>
+                            </a>
+                        :
+                            <a href={`mailto:${order?.client?.email}`}>
+                                <button className="bg-blue-500 text-white text-lg p-2 rounded flex justify-around items-center m-auto gap-2 hover:bg-blue-800">
+                                    <FontAwesomeIcon icon={faEnvelope}/>{order?.client?.email}
+                                </button>
+                            </a>
+                    )}
                 </div>
             </div>
             <div className="relative m-2">

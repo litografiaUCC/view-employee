@@ -52,7 +52,7 @@ export default function OrderCard({
     };
 
     if(order?.approval){
-        component = (<p className=" font-semibold font-md text-xl text-center text-wrap">
+        component = (<p className="font-semibold font-md text-xl text-center text-wrap">
             Ordenado por: <br />
             {order?.client?.name && order?.client?.name} {(order?.client?.lastName && order?.client?.lastName)}
         </p>);
@@ -78,7 +78,7 @@ export default function OrderCard({
                 Orden #{order?.id}
             </p>
         </div>
-        <div className="flex gap-4 items-center justify-around pr-2 max-h-[50%]">
+        <div className={`flex gap-4 items-center justify-around pr-2 max-h-[50%] `}>
             {component}
         </div>
     </div>

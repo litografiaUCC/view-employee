@@ -17,7 +17,7 @@ function useFetchOrders() {
             if(res.ok) return res.json();
             if(res.status >= 400) throw new Error();
         }).then((res)=>{
-            setOrdersApproved(res);
+            setOrdersApproved(res.reverse());
             setLoading(false);
         }).catch((e)=>{console.log(e);});
 

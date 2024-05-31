@@ -28,7 +28,7 @@ const Orders = ()=>{
             setIsUpdated={setIsUpdated} 
           />
           <OrdersApprovedSection 
-            ordersApproved={ordersApproved} 
+            ordersApproved={ordersApproved.reverse()} 
             isUpdated={isUpdated} 
             setIsUpdated={setIsUpdated} 
           />

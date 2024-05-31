@@ -1,5 +1,4 @@
 import OrderCard from "./OrderCard";
-import serviceImage from "../../assets/paper.jpg";
 
 export default function OrdersApprovedSection({ordersApproved}){
 
