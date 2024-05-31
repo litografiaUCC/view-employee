@@ -40,7 +40,7 @@ export default function MaterialCard({addStockActive, data, formData, setFormDat
             <div 
                 className='bg-[#4599E8]/[0.50] pl-5 pr-5 text-lg rounded-full w-type'
             >
-                {data?.typeMaterial ? data?.typeMaterial : "Sin tipo"}
+                {data?.typeMaterial?.name ? data?.typeMaterial?.name : "Sin tipo"}
             </div>
             <p className='text-sm'>{data?.description ? data?.description : "Sin descripción"}</p>
             <div className='self-end flex flex-col items-end'>

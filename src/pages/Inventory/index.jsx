@@ -7,6 +7,8 @@ import useFetchInventory from "../../hooks/useFetchInventory";
 const Inventory = ()=>{
     const [data, loading, setData, setIsUpdated] = useFetchInventory();
 
+    console.log(data);
+
     return (
         <>
         <Navbar route="/inventory"></Navbar>

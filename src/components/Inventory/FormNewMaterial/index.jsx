@@ -17,6 +17,15 @@ const FormNewMaterial = ({setDisplayForm, typesMaterial, setIsUpdated}) => {
         let { name, value } = e.target;
         if(name.includes("price") || name.includes("quantity")) value = parseInt(value);
         if(name.includes("type") && value === 0) return;
+        if(name.includes("type")){
+            setFormData({
+                ...formData,
+                typeMaterial: {
+                    id: value
+                }
+            });
+            return;
+        }
         setFormData({
             ...formData,
             [name]: value
@@ -84,7 +93,7 @@ const FormNewMaterial = ({setDisplayForm, typesMaterial, setIsUpdated}) => {
                     <select name="type" id="type" className="w-1/2 cursor-pointer block p-2 text-md  border border-gray-400 rounded-lg focus:ring-[#3166B5] focus:border-[#3166B5] focus:outline-none "  onChange={updateFormData}>
                         <option defaultValue hidden selected>Seleccione el tipo</option>
                         <option value={0}>N/A</option>
-                        {typesMaterial?.map(({id, name})=>
+                        {typesMaterial?.map(({id, name, ...data})=>
                             <option value={id} key={id}>{name}</option>
                         )}
                     </select>
